@@ -5,7 +5,7 @@
     "display": "standalone",
     "orientation": "portrait",
     "scope": "/",
-    "start_url": "Parcel_Label/index.html",
+    "start_url": "https://github.com/CedricMrt/Parcel_Label",
     "name": "Parcel-Label",
     "short_name": "Label",
     "description": "Generer etiquettes colis",
