@@ -34,7 +34,7 @@ header {
 }
 
 input,
-button {
+#button {
     width: 45%;
     text-align: center;
     font-size: 3.5vw;
@@ -50,12 +50,12 @@ input:placeholder-shown {
     font-size: 1.5vw;
 }
 
-button {
+#button {
     cursor: pointer;
     background-color: beige;
 }
 
-button:hover {
+#button:hover {
     animation: bounce 1s;
 }
 
@@ -82,4 +82,24 @@ button:hover {
 
 #toPrint {
     display: none;
+}
+
+.installBtn {
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    height: 8vh;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: teal;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.slide {
+    transform: translateX(100%);
 }
