@@ -26,6 +26,30 @@ button.onclick = () => {
     doc.deletePage(1)
     doc.output('dataurlnewwindow');
 
-
-
 }
+
+//Register service worker to control making site work offline
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('sw.js')
+            .then(registration => {
+                console.log(`Service Worker App Messagerie enregistré!\nRessource: ${registration.scope}`);
+            })
+            .catch(err => {
+                console.log(`Echec de l'enregistrement du Service Worker TodoList: ${err}`);
+            });
+    });
+}
+
+/**Bouton Installation Application*/
+window.onbeforeinstallprompt = (event) => {
+    event.preventDefault(); // annuler la banniere par defaut
+    installBtn.classList.add("slide"); //affiche la banniere perso
+
+    installBtn.onclick = () => {
+        installBtn.classList.remove("slide"); //faire disparaitre le bouton
+        setTimeout(() => installBtn.style.display = "none", 500);
+        event.prompt(); //permettre l'installation
+    };
+};
