@@ -15,12 +15,12 @@ button.onclick = () => {
     for (var i = 1; i <= itemNumber; i++) {
         doc.addPage();
         doc.setFont("Arial", "bold");
-        doc.setFontSize(70);
-        doc.text(20, 50, blNumber);
+        doc.setFontSize(90);
+        doc.text(20, 70, blNumber);
 
         doc.setFont("Arial", "bold");
-        doc.setFontSize(75);
-        doc.text(35, 100, i + "/" + itemNumber);
+        doc.setFontSize(95);
+        doc.text(35, 120, i + "/" + itemNumber);
 
     }
     doc.deletePage(1)
