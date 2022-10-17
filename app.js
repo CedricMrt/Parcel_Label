@@ -16,7 +16,7 @@ button.onclick = () => {
         doc.addPage();
         doc.setFont("Arial", "bold");
         doc.setFontSize(80);
-        doc.text(20, 70, blNumber);
+        doc.text(10, 70, blNumber);
 
         doc.setFont("Arial", "bold");
         doc.setFontSize(95);
