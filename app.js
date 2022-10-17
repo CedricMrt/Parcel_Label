@@ -15,7 +15,7 @@ button.onclick = () => {
     for (var i = 1; i <= itemNumber; i++) {
         doc.addPage();
         doc.setFont("Arial", "bold");
-        doc.setFontSize(90);
+        doc.setFontSize(80);
         doc.text(20, 70, blNumber);
 
         doc.setFont("Arial", "bold");
