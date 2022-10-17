@@ -20,7 +20,7 @@ button.onclick = () => {
 
         doc.setFont("Arial", "bold");
         doc.setFontSize(95);
-        doc.text(35, 120, i + "/" + itemNumber);
+        doc.text(30, 120, i + "/" + itemNumber);
 
     }
     doc.deletePage(1)
