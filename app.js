@@ -3,7 +3,7 @@ window.jsPDF = window.jspdf.jsPDF;
 const button = document.querySelector('#button');
 
 button.onclick = () => {
-    const blNumber = document.querySelector(".bl").value;
+    let blNumber = document.querySelector(".bl").value;
     const itemNumber = document.querySelector(".number").value;
     event.preventDefault();
 
@@ -21,10 +21,10 @@ button.onclick = () => {
         doc.setFont("Arial", "bold");
         doc.setFontSize(95);
         doc.text(30, 120, i + "/" + itemNumber);
-        blNumber++
 
     }
     doc.deletePage(1)
+    blNumber++
     //doc.output('dataurlnewwindow');
     doc.autoPrint();
 
