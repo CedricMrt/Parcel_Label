@@ -10,7 +10,6 @@ button.onclick = () => {
     const doc = new jsPDF({
         unit: "mm",
         format: [150, 105]
-        blNumber++
     });
 
     for (var i = 1; i <= itemNumber; i++) {
