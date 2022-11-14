@@ -3,7 +3,7 @@ window.jsPDF = window.jspdf.jsPDF;
 const button = document.querySelector('#button');
 
 button.onclick = () => {
-    let blNumber = document.querySelector(".bl").value;
+    const blNumber = document.querySelector(".bl").value;
     const itemNumber = document.querySelector(".number").value;
     event.preventDefault();
 
