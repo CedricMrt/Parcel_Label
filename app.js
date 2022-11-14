@@ -24,6 +24,7 @@ button.onclick = () => {
 
     }
     doc.deletePage(1)
+    blNumber++
     //doc.output('dataurlnewwindow');
     doc.autoPrint();
 
