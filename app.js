@@ -23,8 +23,7 @@ button.onclick = () => {
         doc.text(30, 120, i + "/" + itemNumber);
 
     }
-    blNumber = parseInt(blNumber.value+1)
-    doc.deletePage(1)
+    doc.deletePage(1);
     //doc.output('dataurlnewwindow');
     doc.autoPrint();
 
