@@ -23,7 +23,7 @@ button.onclick = () => {
     doc.text(35, 100, i + "/" + itemNumber);
   }
   doc.deletePage(1);
-  doc.output("dataurlnewwindow");
+  /*doc.output("dataurlnewwindow");*/
   doc.autoPrint();
   
 const hiddFrame = document.createElement('iframe');
