@@ -24,6 +24,29 @@ button.onclick = () => {
   }
   doc.deletePage(1);
   doc.output("dataurlnewwindow");
+  doc.autoPrint();
+  
+const hiddFrame = document.createElement('iframe');
+hiddFrame.style.position = 'fixed';
+// "visibility: hidden" would trigger safety rules in some browsers like safari，
+// in which the iframe display in a pretty small size instead of hidden.
+// here is some little hack ~
+hiddFrame.style.width = '1px';
+hiddFrame.style.height = '1px';
+hiddFrame.style.opacity = '0.01';
+const isSafari = /^((?!chrome|android).)*safari/i.test(window.navigator.userAgent);
+if (isSafari) {
+  // fallback in safari
+  hiddFrame.onload = () => {
+    try {
+      hiddFrame.contentWindow.document.execCommand('print', false, null);
+    } catch (e) {
+      hiddFrame.contentWindow.print();
+    }
+  };
+}
+hiddFrame.src = doc.output('bloburl');
+document.body.appendChild(hiddFrame);
 
   const newBlNumber = parseInt(blNumber) + 1;
   document.querySelector(".bl").value = newBlNumber;
