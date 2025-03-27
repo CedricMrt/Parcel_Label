@@ -58,6 +58,8 @@ document.body.appendChild(hiddFrame);
 
   const newBlNumber = parseInt(blNumber) + 1;
   document.querySelector(".bl").value = newBlNumber;
+
+  document.querySelector(".number").value = "";
 };
 
 //Register service worker to control making site work offline
