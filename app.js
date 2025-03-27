@@ -13,15 +13,24 @@ button.onclick = () => {
   });
 
   for (var i = 1; i <= itemNumber; i++) {
-    doc.addPage();
-    doc.setFont("Arial", "bold");
-    doc.setFontSize(70);
-    doc.text(20, 50, blNumber);
+  doc.addPage();
+  doc.setFont("Arial", "bold");
+  doc.setFontSize(70);
 
-    doc.setFont("Arial", "bold");
-    doc.setFontSize(75);
-    doc.text(35, 100, i + "/" + itemNumber);
-  }
+  // Calcul du centrage horizontal
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const textWidth = doc.getTextWidth(blNumber);
+  const centerX = (pageWidth - textWidth) / 2;
+
+  doc.text(centerX, 50, blNumber);
+
+  doc.setFontSize(75);
+  const itemText = i + "/" + itemNumber;
+  const itemTextWidth = doc.getTextWidth(itemText);
+  const itemCenterX = (pageWidth - itemTextWidth) / 2;
+
+  doc.text(itemCenterX, 100, itemText);
+}
   doc.deletePage(1);
   doc.autoPrint();
   
