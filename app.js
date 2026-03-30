@@ -11,7 +11,7 @@ button.onclick = (event) => {
   const doc = new jsPDF({
     orientation: "portrait",
     unit: "mm",
-    format: [150, 105],
+    format: [105, 150],
   });
 
   const pageWidth = doc.internal.pageSize.getWidth();
