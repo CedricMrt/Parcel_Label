@@ -11,7 +11,7 @@ button.onclick = (event) => {
   const doc = new jsPDF({
     orientation: "portrait",
     unit: "mm",
-    format: [105, 150],
+    format: [105, 130],
   });
 
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -23,7 +23,7 @@ button.onclick = (event) => {
 
     doc.setFont("Helvetica", "bold");
     doc.setFontSize(60);
-    doc.text(blNumber.toString(), centerX, pageHeight / 2 - 10, {
+    doc.text(blNumber.toString(), centerX, pageHeight / 2 - 25, {
       align: "center",
     });
 
