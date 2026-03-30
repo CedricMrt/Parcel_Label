@@ -2,63 +2,59 @@ window.jsPDF = window.jspdf.jsPDF;
 
 const button = document.querySelector("#button");
 
-button.onclick = () => {
-  const blNumber = document.querySelector(".bl").value;
-  const itemNumber = document.querySelector(".number").value;
+button.onclick = (event) => {
   event.preventDefault();
+
+  const blNumber = document.querySelector(".bl").value;
+  const itemNumber = parseInt(document.querySelector(".number").value, 10);
 
   const doc = new jsPDF({
     unit: "mm",
     format: [150, 105],
   });
 
-  for (var i = 1; i <= itemNumber; i++) {
-  doc.addPage();
-  doc.setFont("Arial", "bold");
-  doc.setFontSize(70);
-
-  // Calcul du centrage horizontal
   const pageWidth = doc.internal.pageSize.getWidth();
-  const textWidth = doc.getTextWidth(blNumber);
-  const centerX = (pageWidth - textWidth) / 2;
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const centerX = pageWidth / 2;
 
-  doc.text(centerX, 50, blNumber);
+  for (let i = 1; i <= itemNumber; i++) {
+    if (i > 1) doc.addPage();
 
-  doc.setFontSize(75);
-  const itemText = i + "/" + itemNumber;
-  const itemTextWidth = doc.getTextWidth(itemText);
-  const itemCenterX = (pageWidth - itemTextWidth) / 2;
+    doc.setFont("Helvetica", "bold");
+    doc.setFontSize(70);
+    doc.text(blNumber.toString(), centerX, pageHeight / 2 - 10, {
+      align: "center",
+    });
 
-  doc.text(itemCenterX, 100, itemText);
-}
-  doc.deletePage(1);
+    doc.setFontSize(75);
+    doc.text(`${i}/${itemNumber}`, centerX, pageHeight / 2 + 25, {
+      align: "center",
+    });
+  }
+
   doc.autoPrint();
-  
-const hiddFrame = document.createElement('iframe');
-hiddFrame.style.position = 'fixed';
-// "visibility: hidden" would trigger safety rules in some browsers like safari，
-// in which the iframe display in a pretty small size instead of hidden.
-// here is some little hack ~
-hiddFrame.style.width = '1px';
-hiddFrame.style.height = '1px';
-hiddFrame.style.opacity = '0.01';
-const isSafari = /^((?!chrome|android).)*safari/i.test(window.navigator.userAgent);
-if (isSafari) {
-  // fallback in safari
-  hiddFrame.onload = () => {
-    try {
-      hiddFrame.contentWindow.document.execCommand('print', false, null);
-    } catch (e) {
-      hiddFrame.contentWindow.print();
-    }
-  };
-}
-hiddFrame.src = doc.output('bloburl');
-document.body.appendChild(hiddFrame);
 
-  const newBlNumber = parseInt(blNumber) + 1;
-  document.querySelector(".bl").value = newBlNumber;
+  const hiddFrame = document.createElement("iframe");
+  hiddFrame.style.position = "fixed";
+  hiddFrame.style.width = "1px";
+  hiddFrame.style.height = "1px";
+  hiddFrame.style.opacity = "0.01";
 
+  const isSafari = /^((?!chrome|android).)*safari/i.test(window.navigator.userAgent);
+  if (isSafari) {
+    hiddFrame.onload = () => {
+      try {
+        hiddFrame.contentWindow.document.execCommand("print", false, null);
+      } catch (e) {
+        hiddFrame.contentWindow.print();
+      }
+    };
+  }
+
+  hiddFrame.src = doc.output("bloburl");
+  document.body.appendChild(hiddFrame);
+
+  document.querySelector(".bl").value = parseInt(blNumber, 10) + 1;
   document.querySelector(".number").value = "";
 };
 
