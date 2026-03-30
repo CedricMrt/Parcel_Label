@@ -21,7 +21,7 @@ button.onclick = (event) => {
     if (i > 1) doc.addPage();
 
     doc.setFont("Helvetica", "bold");
-    doc.setFontSize(60);
+    doc.setFontSize(40);
     doc.text(blNumber.toString(), centerX, pageHeight / 2 - 10, {
       align: "center",
     });
